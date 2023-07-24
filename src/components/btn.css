@@ -1,0 +1,7 @@
+.btn {
+	font-weight: bold;
+	background: var(--background);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

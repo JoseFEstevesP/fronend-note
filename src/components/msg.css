@@ -1,0 +1,18 @@
+.msg {
+	width: 20em;
+	/* max-width: 100%; */
+	font-size: 1rem;
+	padding: 0.625em;
+	position: relative;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 0.3125em;
+	border: 0.125em solid var(--border);
+	background-color: var(--incorrect);
+}
+/* .msg__title
+.msg__btn */

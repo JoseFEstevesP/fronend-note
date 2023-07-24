@@ -1,0 +1,87 @@
+.table {
+	min-width: 20em;
+	max-width: 95%;
+	font-size: 1rem;
+	padding: 0.625em;
+	overflow: auto;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(3, auto);
+	gap: 0.625em;
+	justify-items: stretch;
+	border-radius: 0.3125em;
+	border: 0.125em solid var(--border);
+	background: var(--background);
+}
+.table--note {
+	max-width: 100%;
+	padding: 0;
+	border-radius: 0;
+	border: 0;
+	background: none;
+}
+.table--modal {
+	border-radius: 0;
+	border: 0;
+	background: none;
+}
+.table__title {
+	text-align: center;
+	margin: 0;
+}
+.table__contentBtn {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.625em;
+	flex-wrap: wrap;
+}
+.table__btnAdd {
+	height: 2.5em;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.625em;
+	padding: 0.3125em 0.625em;
+	border-radius: 0.3125em;
+	border: 0.125em solid var(--border);
+	background: var(--background);
+}
+.table__icon {
+	width: 1.5625em;
+}
+.table__content {
+	width: 100%;
+	text-align: center;
+}
+.table__th {
+	padding: 0.625rem;
+	border: 0.0625em solid var(--border);
+}
+.table__td {
+	padding: 0.625rem;
+	border: 0.0625em solid var(--border);
+}
+.table__btnActions {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.table__btn {
+	width: 1.875em;
+	height: 1.875em;
+	padding: 0.3125em;
+	border: 0;
+	background: none;
+}
+.table__btn--delete {
+	color: var(--incorrect);
+}
+.table__btn--update {
+	color: var(--update);
+}
+.table__btn--add {
+	color: var(--correct);
+}
