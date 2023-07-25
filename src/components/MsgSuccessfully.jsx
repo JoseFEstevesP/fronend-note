@@ -11,7 +11,7 @@ const MsgSuccessfully = () => {
 		setIsMsg(false);
 	};
 	useEffect(() => {
-		if ((msg && msg.msg) || msg.uid) {
+		if (msg && (msg.msg || msg.uid)) {
 			setIsMsg(true);
 			setMsgText(msg.msg ? msg.msg : msg.uid);
 		}
