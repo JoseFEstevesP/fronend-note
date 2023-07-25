@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import useDelete from '../hooks/useDelete';
 import { useGet } from '../hooks/useGet';
-import Btn from './btn';
 import { IconDelete, IconUpdate } from './Icons';
+import Btn from './btn';
 const TableRowTeacher = ({ data, setData, handelOpen, setNewData }) => {
 	const { handelGet } = useGet();
 	const { deleteData } = useDelete({ urlDefault: '/teacher/', setData });
@@ -25,12 +25,6 @@ const TableRowTeacher = ({ data, setData, handelOpen, setNewData }) => {
 	const handleDelete = () => deleteData(uid);
 	const handleUpdate = () => {
 		handelOpen();
-		console.log('handleUpdate -> { uid, uidTeacher, courseUid, sectionUid }:', {
-			uid,
-			uidTeacher,
-			courseUid,
-			sectionUid,
-		});
 		setNewData({ uid, uidTeacher, courseUid, sectionUid });
 	};
 	return (

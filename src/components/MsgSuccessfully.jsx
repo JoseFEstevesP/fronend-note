@@ -18,7 +18,6 @@ const MsgSuccessfully = () => {
 		const timer = setTimeout(() => setIsMsg(false), 4000);
 		return () => clearTimeout(timer);
 	}, [msg]);
-	console.log('MsgSuccessfully -> msg:', msg);
 	return (
 		<>
 			<div
