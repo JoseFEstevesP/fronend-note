@@ -1,0 +1,38 @@
+.msgFetch {
+	width: max-content;
+	font-size: 1rem;
+	position: absolute;
+	bottom: 0.625em;
+	right: 0.625em;
+	padding: 0px 1.25em;
+	border-radius: 0.3125em;
+	border: 0.125em solid var(--border);
+	background: var(--correct);
+	transform: translateX(-1.875em);
+	opacity: 0;
+	visibility: hidden;
+	transition: transform 1s, opacity 1s, visibility 1s;
+}
+.msgFetch--correct {
+	background: var(--correct);
+}
+.msgFetch--incorrect {
+	background: var(--incorrect);
+}
+.msgFetch-show {
+	transform: translateX(0);
+	opacity: 1;
+	visibility: visible;
+}
+.msgFetch__content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.3125em;
+}
+.msgFetch__closeMsg {
+	width: 1.5625em;
+	height: 1.5625em;
+	border: 0;
+	background: none;
+}

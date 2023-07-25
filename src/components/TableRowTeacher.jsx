@@ -25,6 +25,12 @@ const TableRowTeacher = ({ data, setData, handelOpen, setNewData }) => {
 	const handleDelete = () => deleteData(uid);
 	const handleUpdate = () => {
 		handelOpen();
+		console.log('handleUpdate -> { uid, uidTeacher, courseUid, sectionUid }:', {
+			uid,
+			uidTeacher,
+			courseUid,
+			sectionUid,
+		});
 		setNewData({ uid, uidTeacher, courseUid, sectionUid });
 	};
 	return (

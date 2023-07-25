@@ -1,9 +1,11 @@
 import { useContext, useState } from 'react';
 import uuid4 from 'uuid4';
 import { pathUrl } from '../constant/url';
+import { userMsg } from '../context/MsgProvider';
 import { userToken } from '../context/userToken';
 import { fetchData } from '../helpers/fetch';
 export const useFormRegister = ({ defaultUrl, setData, initForm }) => {
+	const { setMsg } = useContext(userMsg);
 	const { token } = useContext(userToken);
 	const [form, setForm] = useState(initForm);
 	const [errors, setErrors] = useState([]);
@@ -34,10 +36,12 @@ export const useFormRegister = ({ defaultUrl, setData, initForm }) => {
 			})
 			.then(res => {
 				if (res.errors) {
+					setMsg(res.errors[0]);
 					setLoading(false);
 					return setErrors(res.errors);
 				}
 				if (res) {
+					setMsg(res);
 					setErrors([]);
 					setForm(initForm);
 					setLoading(false);
@@ -68,10 +72,12 @@ export const useFormRegister = ({ defaultUrl, setData, initForm }) => {
 			})
 			.then(res => {
 				if (res.errors) {
+					setMsg(res.errors[0]);
 					setLoading(false);
 					return setErrors(res.errors);
 				}
 				if (res) {
+					setMsg(res);
 					setErrors([]);
 					setForm(initForm);
 					setLoading(false);

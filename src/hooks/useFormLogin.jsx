@@ -1,10 +1,12 @@
 import { useContext, useState } from 'react';
-import { fetchData } from '../helpers/fetch';
-import { userToken } from '../context/userToken';
-import { userData } from '../context/userDataUser';
 import { pathUrl } from '../constant/url';
+import { userMsg } from '../context/MsgProvider';
+import { userData } from '../context/userDataUser';
+import { userToken } from '../context/userToken';
+import { fetchData } from '../helpers/fetch';
 
 export const useFormLogin = initialForm => {
+	const { setMsg } = useContext(userMsg);
 	const { setToken } = useContext(userToken);
 	const { setDataUser } = useContext(userData);
 	const [form, setForm] = useState(initialForm);
@@ -30,6 +32,8 @@ export const useFormLogin = initialForm => {
 			})
 			.then(res => {
 				if (res.errors) {
+					setMsg(res.errors[0]);
+					setLoading(false);
 					return setErrors(res.errors);
 				}
 				if (res) {
@@ -67,6 +71,7 @@ export const useFormLogin = initialForm => {
 	};
 	return {
 		form,
+		setForm,
 		errors,
 		loading,
 		response,

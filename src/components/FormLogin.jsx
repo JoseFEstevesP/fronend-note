@@ -1,14 +1,9 @@
+import { useEffect } from 'react';
+import { useFormLogin } from '../hooks/useFormLogin';
+import { IconCI, IconPass, IconSubmit } from './Icons';
+import Input from './Input';
 import Btn from './btn';
 import './form.css';
-import { useFormLogin } from '../hooks/useFormLogin';
-import {
-	IconCI,
-	IconCorrect,
-	IconIncorrect,
-	IconPass,
-	IconSubmit,
-} from './Icons';
-import { useEffect } from 'react';
 const initForm = {
 	ci: '',
 	password: '',
@@ -24,70 +19,26 @@ const FormLogin = ({ setLoading }) => {
 	return (
 		<>
 			<form className='form' onSubmit={handleSubmit}>
-				<div className='form__contentInput'>
-					<div className='form__gupInput'>
-						<input
-							className='form__input'
-							type='number'
-							name='ci'
-							placeholder='CI...'
-							onChange={handleChange}
-							value={form.ci}
-							required
-						/>
-						<div className='form__icon'>
-							<IconCI
-								classStyle={
-									ciErr.length > 0 || response ? 'form__iconHidden' : ''
-								}
-							/>
-							{ciErr.length > 0 && (
-								<IconIncorrect classStyle='form__iconIncorrect' />
-							)}
-							{response && <IconCorrect classStyle='form__iconCorrect' />}
-						</div>
-					</div>
-					{ciErr.length > 0 &&
-						ciErr.map((msg, i) => {
-							return (
-								<p className='form__msg' key={i}>
-									{msg.ci}
-								</p>
-							);
-						})}
-				</div>
-				<div className='form__contentInput'>
-					<div className='form__gupInput'>
-						<input
-							className='form__input'
-							type='password'
-							name='password'
-							placeholder='Contraseña...'
-							onChange={handleChange}
-							value={form.password}
-							required
-						/>
-						<div className='form__icon'>
-							<IconPass
-								classStyle={
-									passErr.length > 0 || response ? 'form__iconHidden' : ''
-								}
-							/>
-							{passErr.length > 0 && (
-								<IconIncorrect classStyle='form__iconIncorrect' />
-							)}
-							{response && <IconCorrect classStyle='form__iconCorrect' />}
-						</div>
-					</div>
-					{passErr.length > 0 &&
-						passErr.map((msg, i) => {
-							return (
-								<p className='form__msg' key={i}>
-									{msg.ci}
-								</p>
-							);
-						})}
-				</div>
+				<Input
+					errors={ciErr}
+					handleChange={handleChange}
+					Icon={IconCI}
+					name='ci'
+					placeholder='CI...'
+					response={response}
+					type='number'
+					value={form.ci}
+				/>
+				<Input
+					handleChange={handleChange}
+					response={response}
+					Icon={IconPass}
+					errors={passErr}
+					name='password'
+					placeholder='Contraseña...'
+					value={form.password}
+					type='password'
+				/>
 				<Btn type='submit' classStyle='form__btn' title='iniciar sesión'>
 					Enviar <IconSubmit classStyle='form__iconSubmit' />
 				</Btn>

@@ -31,13 +31,14 @@ const FormRegisterUser = ({ setData, handelClose, setLoading, isOpen }) => {
 	});
 	useEffect(() => {
 		if (!isOpen) {
-			setForm(initForm);
 			setErrors([]);
+			setForm(initForm);
+		}
+		if (isOpen) {
+			setForm(initForm);
+			handleListsRol();
 		}
 	}, [isOpen]);
-	useEffect(() => {
-		handleListsRol();
-	}, []);
 	useEffect(() => {
 		handelClose();
 	}, [response]);

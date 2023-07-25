@@ -1,12 +1,13 @@
 import { useContext, useState } from 'react';
 import { pathUrl } from '../constant/url';
+import { userMsg } from '../context/MsgProvider';
 import { userToken } from '../context/userToken';
 import { fetchData } from '../helpers/fetch';
 
 export const useUpdate = (urlDefault, initForm, setData) => {
+	const { setMsg } = useContext(userMsg);
 	const [form, setForm] = useState(initForm);
 	const [errors, setErrors] = useState([]);
-	const [msg, setMsg] = useState({});
 	const [loading, setLoading] = useState(false);
 	const [response, setResponse] = useState(false);
 	const { token } = useContext(userToken);
@@ -29,14 +30,22 @@ export const useUpdate = (urlDefault, initForm, setData) => {
 				},
 			})
 			.then(res => {
-				if (res.error) return setErrors(res.error);
-				setData(prevData =>
-					prevData.map(item => (item.uid === form.uid ? form : item))
-				);
-				setMsg(res.msg);
-				setForm(initForm);
-				setResponse(true);
-				setTimeout(() => setResponse(false), 1000);
+				if (res.errors) {
+					setMsg(res.errors[0]);
+					setLoading(false);
+					return setErrors(res.errors);
+				}
+				if (res) {
+					setMsg(res);
+					setErrors([]);
+					setLoading(false);
+					setData(prevData =>
+						prevData.map(item => (item.uid === form.uid ? form : item))
+					);
+					setForm(initForm);
+					setResponse(true);
+					setTimeout(() => setResponse(false), 1000);
+				}
 			})
 			.catch(err => console.error(err))
 			.finally(() => setLoading(false));
@@ -56,13 +65,14 @@ export const useUpdate = (urlDefault, initForm, setData) => {
 			})
 			.then(res => {
 				if (res.errors) {
+					setMsg(res.errors[0]);
 					setLoading(false);
 					return setErrors(res.errors);
 				}
 				if (res) {
+					setMsg(res);
 					setErrors([]);
 					setLoading(false);
-					setMsg(res.msg);
 					setForm(initForm);
 					setResponse(true);
 					setTimeout(() => setResponse(false), 1000);
@@ -84,6 +94,5 @@ export const useUpdate = (urlDefault, initForm, setData) => {
 		form,
 		setForm,
 		errors,
-		msg,
 	};
 };

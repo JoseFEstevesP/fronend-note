@@ -24,7 +24,7 @@ const FormUser = ({
 	const nameErr = errors.filter(error => error.name);
 	const surnameErr = errors.filter(error => error.surname);
 	const emailErr = errors.filter(error => error.email);
-	const rolUidErr = errors.filter(error => error.uid);
+	const rolUidErr = errors.filter(error => error.rolUid);
 	return (
 		<form action='#' className='form' onSubmit={handleSubmit}>
 			<Input

@@ -1,11 +1,12 @@
 import { useCallback, useContext, useState } from 'react';
-import { fetchData } from '../helpers/fetch';
 import { pathUrl } from '../constant/url';
+import { userMsg } from '../context/MsgProvider';
 import { userToken } from '../context/userToken';
+import { fetchData } from '../helpers/fetch';
 
 const useDelete = ({ urlDefault = '', setData }) => {
+	const { setMsg } = useContext(userMsg);
 	const { token } = useContext(userToken);
-	const [msg, setMsg] = useState({});
 	const [error, setError] = useState([]);
 	const deleteData = useCallback(uid => {
 		fetchData()
@@ -21,13 +22,14 @@ const useDelete = ({ urlDefault = '', setData }) => {
 			.then(res => {
 				if (res.error) {
 					setError(res.error);
-				} else if (res.msg) {
-					setMsg(res.msg);
+				}
+				if (res) {
+					setMsg(res);
 					setData(data => data.filter(item => item.uid !== uid));
 				}
 			})
 			.catch(err => console.error(err));
 	}, []);
-	return { deleteData, msg, error };
+	return { deleteData, error };
 };
 export default useDelete;

@@ -45,7 +45,6 @@ const TableTeacher = () => {
 		setLoading: setLoadingTableSection,
 	} = useModal();
 	useEffect(() => handleLists(), []);
-
 	return (
 		<section className='table'>
 			<Modal
@@ -74,6 +73,7 @@ const TableTeacher = () => {
 						newData={newData}
 						setNewData={setNewData}
 						handelClose={handleCloseUpdateTeacher}
+						isOpen={modalUpdateTeacher}
 					/>
 				</Modal>
 			)}
