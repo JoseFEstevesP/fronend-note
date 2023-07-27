@@ -6,8 +6,32 @@
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: repeat(3, auto);
+	grid-template-areas: 'form' 'table' 'btn';
 	gap: 0.625em;
 	justify-items: center;
 	align-items: center;
 	overflow-y: auto;
+}
+@media screen and (min-width: 768px) {
+	.formNote {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(2, auto);
+		grid-template-areas: 'form table' 'form table' 'btn btn';
+		align-items: start;
+	}
+	.formNote--deleteTable {
+		grid-template-areas: 'table table' 'table table' 'btn btn';
+	}
+	.formNote--deleteForm {
+		grid-template-areas: 'form form' 'form form' 'btn btn';
+	}
+}
+.form {
+	grid-area: form;
+}
+.table {
+	grid-area: table;
+}
+.form__btn {
+	grid-area: btn;
 }

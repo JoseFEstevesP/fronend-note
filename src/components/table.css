@@ -47,6 +47,11 @@
 	border: 0.125em solid var(--border);
 	background: var(--background);
 }
+.table__btnAdd--width {
+	width: max-content;
+	margin: 0 auto;
+	justify-content: center;
+}
 .table__icon {
 	width: 1.5625em;
 }

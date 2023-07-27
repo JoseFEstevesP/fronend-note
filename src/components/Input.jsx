@@ -52,6 +52,8 @@ export const InputNote = ({
 	type = 'text',
 	value,
 	Icon,
+	min,
+	max,
 }) => {
 	return (
 		<div className='form__contentInput'>
@@ -63,6 +65,8 @@ export const InputNote = ({
 					placeholder={placeholder}
 					onChange={handleChange}
 					value={value}
+					min={min || null}
+					max={max || null}
 					required
 				/>
 				<div className='form__icon'>

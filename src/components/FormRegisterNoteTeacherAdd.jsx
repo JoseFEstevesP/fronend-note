@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { userMsg } from '../context/MsgProvider';
 import { useFormRegister } from '../hooks/useFormRegister';
 import useModal from '../hooks/useModal';
 import {
@@ -29,7 +30,7 @@ const initNote = {
 	activity: '',
 	pointsActivity: '',
 	percentageActivity: '',
-	points: '',
+	points: {},
 	percentage: '',
 };
 const initialRating = [];
@@ -40,6 +41,7 @@ const FormRegisterNoteTeacherAdd = ({
 	handleLists,
 	setLoading,
 }) => {
+	const { setMsg } = useContext(userMsg);
 	const [points, setPoints] = useState({});
 	const [rating, setRating] = useState(initialRating);
 	const [msgNote, setMsgNote] = useState(false);
@@ -101,8 +103,14 @@ const FormRegisterNoteTeacherAdd = ({
 		}
 	}, [isOpen]);
 	const handleMsg = () => {
-		setMsgNote(true);
-		handelOpenMsg();
+		if (points.pointsActivity === 20 && points.percentageActivity === 100) {
+			setMsgNote(true);
+			handelOpenMsg();
+		} else {
+			setMsg({
+				msgNote: 'Los puntos tienen que ser de 20Pts y los porcentaje de 100%',
+			});
+		}
 	};
 	const submitNote = () => {
 		const { rating, uidStudent, uidTeacher, sectionUid, courseUid } = newDate;
@@ -133,9 +141,18 @@ const FormRegisterNoteTeacherAdd = ({
 			setNoteChanged(initNote);
 		}
 	};
+	const pointsBoolean =
+		points.pointsActivity >= 20 ||
+		points.percentageActivity >= 100 ||
+		points.point >= 20 ||
+		points.percentage >= 100;
 	return (
 		<>
-			<div className='formNote '>
+			<div
+				className={`formNote ${pointsBoolean ? 'formNote--deleteTable' : ''} ${
+					!isNote ? 'formNote--deleteForm' : ''
+				}`}
+			>
 				<Modal
 					handelClose={handelCloseMsg}
 					isOpen={modalMsg}
@@ -156,61 +173,70 @@ const FormRegisterNoteTeacherAdd = ({
 						</Btn>
 					</article>
 				</Modal>
-				<form className='form' onSubmit={handleSubmit}>
-					<InputNote
-						name='activity'
-						placeholder='Actividad...'
-						handleChange={handleChange}
-						value={noteChanged.activity}
-						Icon={IconTask}
-					/>
-					<div className='form__group'>
+				{pointsBoolean ? (
+					''
+				) : (
+					<form className='form form--note' onSubmit={handleSubmit}>
 						<InputNote
-							type='number'
-							name='pointsActivity'
-							placeholder='Ptos actividad...'
+							name='activity'
+							placeholder='Actividad...'
 							handleChange={handleChange}
-							value={noteChanged.pointsActivity}
-							Icon={IconPoints}
+							value={noteChanged.activity}
+							Icon={IconTask}
 						/>
-						<InputNote
-							type='number'
-							name='percentageActivity'
-							placeholder='% actividad...'
-							handleChange={handleChange}
-							value={noteChanged.percentageActivity}
-							Icon={IconPercentage}
-						/>
-					</div>
-					<div className='form__group'>
-						<InputNote
-							type='number'
-							placeholder='Ptos estudiante...'
-							name='points'
-							handleChange={handleChange}
-							value={noteChanged.points}
-							Icon={IconPoints}
-						/>
-						<InputNote
-							type='number'
-							placeholder='% estudiante...'
-							name='percentage'
-							handleChange={handleChange}
-							value={noteChanged.percentage}
-							Icon={IconPercentage}
-						/>
-					</div>
-					{points.pointsActivity >= 20 ||
-					points.percentageActivity >= 100 ||
-					points.point >= 20 ||
-					points.percentage >= 100 ? (
-						''
-					) : (
-						<Btn type='submit' classStyle='table__btnAdd' title='Crear nota'>
+						<div className='form__group'>
+							<InputNote
+								type='number'
+								name='pointsActivity'
+								placeholder='Ptos actividad...'
+								handleChange={handleChange}
+								value={noteChanged.pointsActivity}
+								Icon={IconPoints}
+								min='0'
+								max='20'
+							/>
+							<InputNote
+								type='number'
+								name='percentageActivity'
+								placeholder='% actividad...'
+								handleChange={handleChange}
+								value={noteChanged.percentageActivity}
+								Icon={IconPercentage}
+								min='0'
+								max='100'
+							/>
+						</div>
+						<div className='form__group'>
+							<InputNote
+								type='number'
+								placeholder='Ptos estudiante...'
+								name='points'
+								handleChange={handleChange}
+								value={noteChanged.points}
+								Icon={IconPoints}
+								min='0'
+								max='20'
+							/>
+							<InputNote
+								type='number'
+								placeholder='% estudiante...'
+								name='percentage'
+								handleChange={handleChange}
+								value={noteChanged.percentage}
+								Icon={IconPercentage}
+								min='0'
+								max='100'
+							/>
+						</div>
+						<Btn
+							type='submit'
+							classStyle='table__btnAdd table__btnAdd--width'
+							title='Crear nota'
+						>
 							Crear nota
 						</Btn>
-					)}
-				</form>
+					</form>
+				)}
 				{isNote && (
 					<section className='table table--note'>
 						<table className='table__content'>
