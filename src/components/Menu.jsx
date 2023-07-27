@@ -3,11 +3,11 @@ import { NavLink } from 'react-router-dom';
 import { userData } from '../context/userDataUser';
 import useExit from '../hooks/useExit';
 import BtnTheme from './BtnTheme';
+import { IconExit, IconUser } from './Icons';
 import Btn from './btn';
 import './menu.css';
-import { IconExit, IconUser } from './Icons';
 const route = {
-	profesor: 'noteTeacher',
+	profesor: 'teacher',
 	estudiante: 'student',
 	administrador: 'admin',
 };

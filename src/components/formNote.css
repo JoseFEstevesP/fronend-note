@@ -6,7 +6,7 @@
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: repeat(3, auto);
-	grid-template-areas: 'form' 'table' 'btn';
+	grid-template-areas: 'form' 'tableNote' 'btn';
 	gap: 0.625em;
 	justify-items: center;
 	align-items: center;
@@ -16,21 +16,21 @@
 	.formNote {
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-rows: repeat(2, auto);
-		grid-template-areas: 'form table' 'form table' 'btn btn';
+		grid-template-areas: 'form tableNote' 'form tableNote' 'btn btn';
 		align-items: start;
 	}
 	.formNote--deleteTable {
-		grid-template-areas: 'table table' 'table table' 'btn btn';
+		grid-template-areas: 'tableNote tableNote' 'tableNote tableNote' 'btn btn';
 	}
 	.formNote--deleteForm {
 		grid-template-areas: 'form form' 'form form' 'btn btn';
 	}
 }
-.form {
+.form--note {
 	grid-area: form;
 }
-.table {
-	grid-area: table;
+.table--note {
+	grid-area: tableNote;
 }
 .form__btn {
 	grid-area: btn;
