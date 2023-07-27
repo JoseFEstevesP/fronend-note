@@ -31,12 +31,12 @@ export const useUpdate = (urlDefault, initForm, setData) => {
 			})
 			.then(res => {
 				if (res.errors) {
-					setMsg(res.errors[0]);
+					setMsg({ ...res.errors[0], type: false });
 					setLoading(false);
 					return setErrors(res.errors);
 				}
 				if (res) {
-					setMsg(res);
+					setMsg({ ...res, type: true });
 					setErrors([]);
 					setLoading(false);
 					setData(prevData =>
@@ -65,12 +65,12 @@ export const useUpdate = (urlDefault, initForm, setData) => {
 			})
 			.then(res => {
 				if (res.errors) {
-					setMsg(res.errors[0]);
+					setMsg({ ...res.errors[0], type: false });
 					setLoading(false);
 					return setErrors(res.errors);
 				}
 				if (res) {
-					setMsg(res);
+					setMsg({ ...res, type: true });
 					setErrors([]);
 					setLoading(false);
 					setForm(initForm);

@@ -4,13 +4,13 @@ import Login from '../components/Login';
 import Headband from '../components/headband';
 import { userToken } from '../context/userToken';
 import './home.css';
-const Home = ({ handelOpen, setMsg }) => {
+const Home = ({ handelOpen }) => {
 	const { token } = useContext(userToken);
 	if (token) return <Navigate to='/options' />;
 	return (
 		<article className='home'>
 			<Headband />
-			<Login handelOpen={handelOpen} setMsg={setMsg} />
+			<Login handelOpen={handelOpen} />
 		</article>
 	);
 };

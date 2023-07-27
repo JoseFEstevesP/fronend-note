@@ -32,7 +32,7 @@ export const useFormLogin = initialForm => {
 			})
 			.then(res => {
 				if (res.errors) {
-					setMsg(res.errors[0]);
+					setMsg({ ...res.errors[0], type: false });
 					setLoading(false);
 					return setErrors(res.errors);
 				}

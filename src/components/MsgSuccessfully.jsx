@@ -11,9 +11,9 @@ const MsgSuccessfully = () => {
 		setIsMsg(false);
 	};
 	useEffect(() => {
-		if (msg && (msg.msg || msg.uid)) {
+		if (msg && (msg.msg || msg.uid || msg.msgNote)) {
 			setIsMsg(true);
-			setMsgText(msg.msg ? msg.msg : msg.uid);
+			setMsgText(msg.msg || msg.msgNote || msg.uid);
 		}
 		const timer = setTimeout(() => setIsMsg(false), 4000);
 		return () => clearTimeout(timer);
@@ -22,7 +22,7 @@ const MsgSuccessfully = () => {
 		<>
 			<div
 				className={`msgFetch ${msg && isMsg ? 'msgFetch-show' : ''} 
-				${msg && msg?.msg ? 'msgFetch--correct' : 'msgFetch--incorrect'}`}
+				${msg && msg?.type ? 'msgFetch--correct' : 'msgFetch--incorrect'}`}
 			>
 				<div className='msgFetch__content'>
 					{msg && <p className='msgFetch__msg'>{msgText}</p>}

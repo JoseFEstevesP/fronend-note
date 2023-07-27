@@ -24,7 +24,7 @@ const useDelete = ({ urlDefault = '', setData }) => {
 					setError(res.error);
 				}
 				if (res) {
-					setMsg(res);
+					setMsg({ ...res, type: false });
 					setData(data => data.filter(item => item.uid !== uid));
 				}
 			})

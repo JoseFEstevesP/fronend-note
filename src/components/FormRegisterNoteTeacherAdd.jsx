@@ -109,6 +109,7 @@ const FormRegisterNoteTeacherAdd = ({
 		} else {
 			setMsg({
 				msgNote: 'Los puntos tienen que ser de 20Pts y los porcentaje de 100%',
+				type:false
 			});
 		}
 	};
