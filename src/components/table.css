@@ -90,3 +90,7 @@
 .table__btn--add {
 	color: var(--correct);
 }
+thead,
+tfoot {
+	background: var(--headAndFootTable);
+}

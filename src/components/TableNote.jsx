@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { pathUrl } from '../constant/url';
 import useLists from '../hooks/useLists';
 import useModal from '../hooks/useModal';
 import { useUpdate } from '../hooks/useUpdate';
@@ -39,7 +38,7 @@ const TableNote = () => {
 		loading: loadingModal,
 	} = useModal();
 	const { data, setData, handleLists } = useLists({
-		urlDefault: `${pathUrl}/note/lists`,
+		urlDefault: `${import.meta.env.VITE_URL}/note/lists`,
 	});
 	const { form, setForm, updateDataNote, response, loading } = useUpdate(
 		'/note/update-data',
@@ -193,8 +192,10 @@ const TableNote = () => {
 										</tr>
 									);
 								})}
+							</tbody>
+							<tfoot>
 								<tr>
-									<td className='table__td'>Total</td>
+									<th className='table__td'>Total</th>
 									<td className='table__td'>
 										{note?.reduce(
 											(a, b) => Number(a) + Number(b.pointsActivity),
@@ -219,7 +220,7 @@ const TableNote = () => {
 										%
 									</td>
 								</tr>
-							</tbody>
+							</tfoot>
 						</table>
 						<Btn
 							classStyle='form__btn'

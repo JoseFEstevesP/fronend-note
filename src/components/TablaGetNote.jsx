@@ -20,8 +20,10 @@ const TablaGetNote = ({ note }) => {
 						<td className='table__td'>{item.percentage}%</td>
 					</tr>
 				))}
+			</tbody>
+			<tfoot>
 				<tr>
-					<td className='table__td'>Total</td>
+					<th className='table__td'>Total</th>
 					<td className='table__td'>
 						{note?.reduce((a, b) => Number(a) + Number(b.pointsActivity), 0)}
 					</td>
@@ -39,7 +41,7 @@ const TablaGetNote = ({ note }) => {
 						{note?.reduce((a, b) => Number(a) + Number(b.percentage), 0)}%
 					</td>
 				</tr>
-			</tbody>
+			</tfoot>
 		</table>
 	);
 };
