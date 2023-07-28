@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { pathUrl } from '../constant/url';
 import useLists from '../hooks/useLists';
 import useSearch from '../hooks/useSearch';
 import { useUpdate } from '../hooks/useUpdate';
@@ -22,13 +21,13 @@ const FormUpdateStudent = ({
 	const { handleChange, errors, setForm, loading, updateData, response, form } =
 		useUpdate('/student/update-data', initForm, setData);
 	const { data: dataRol, handleLists: handleListsRol } = useLists({
-		urlDefault: `${pathUrl}/rol/lists`,
+		urlDefault: `${import.meta.env.VITE_URL}/rol/lists`,
 	});
 	const { data: dataSection, handleLists: handleListsSection } = useLists({
-		urlDefault: `${pathUrl}/section/lists`,
+		urlDefault: `${import.meta.env.VITE_URL}/section/lists`,
 	});
 	const { data: dataCourse, handleLists: handleListsCourse } = useLists({
-		urlDefault: `${pathUrl}/course/lists`,
+		urlDefault: `${import.meta.env.VITE_URL}/course/lists`,
 	});
 	const { handleListsSearch, data } = useSearch({});
 	useEffect(() => {
@@ -40,7 +39,7 @@ const FormUpdateStudent = ({
 		dataRol.forEach(item => {
 			if (item.name === 'estudiante') {
 				handleListsSearch({
-					url: `${pathUrl}/user/search/${item.uid}`,
+					url: `${import.meta.env.VITE_URL}/user/search/${item.uid}`,
 				});
 			}
 		});

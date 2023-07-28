@@ -1,14 +1,13 @@
 import { useCallback, useContext } from 'react';
-import { fetchData } from '../helpers/fetch';
 import { userToken } from '../context/userToken';
-import { pathUrl } from '../constant/url';
+import { fetchData } from '../helpers/fetch';
 
 export const useGet = urlRol => {
 	const { token } = useContext(userToken);
 	const handelGet = useCallback(
 		url => {
 			return fetchData().get({
-				url: `${pathUrl}${url === '' ? urlRol : url}`,
+				url: `${import.meta.env.VITE_URL}${url === '' ? urlRol : url}`,
 				options: {
 					headers: {
 						'Content-type': 'application/json',

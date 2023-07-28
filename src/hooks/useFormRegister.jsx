@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
 import uuid4 from 'uuid4';
-import { pathUrl } from '../constant/url';
 import { userMsg } from '../context/MsgProvider';
 import { userToken } from '../context/userToken';
 import { fetchData } from '../helpers/fetch';
@@ -25,7 +24,7 @@ export const useFormRegister = ({ defaultUrl, setData, initForm }) => {
 		setLoading(true);
 		fetchData()
 			.post({
-				url: `${pathUrl}${defaultUrl}`,
+				url: `${import.meta.env.VITE_URL}${defaultUrl}`,
 				options: {
 					headers: {
 						'Content-type': 'application/json',
@@ -61,7 +60,7 @@ export const useFormRegister = ({ defaultUrl, setData, initForm }) => {
 		setLoading(true);
 		fetchData()
 			.post({
-				url: `${pathUrl}${defaultUrl}`,
+				url: `${import.meta.env.VITE_URL}${defaultUrl}`,
 				options: {
 					headers: {
 						'Content-type': 'application/json',

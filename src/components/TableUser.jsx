@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { pathUrl } from '../constant/url';
 import useLists from '../hooks/useLists';
 import useModal from '../hooks/useModal';
 import FormRegisterUser from './FormRegisterUser';
@@ -12,7 +11,7 @@ import Btn from './btn';
 import './table.css';
 const TableUser = () => {
 	const { data, setData, handleLists } = useLists({
-		urlDefault: `${pathUrl}/user/lists`,
+		urlDefault: `${import.meta.env.VITE_URL}/user/lists`,
 	});
 	const [newData, setNewData] = useState(null);
 	const {

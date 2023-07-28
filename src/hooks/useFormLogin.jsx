@@ -1,5 +1,4 @@
 import { useContext, useState } from 'react';
-import { pathUrl } from '../constant/url';
 import { userMsg } from '../context/MsgProvider';
 import { userData } from '../context/userDataUser';
 import { userToken } from '../context/userToken';
@@ -22,7 +21,7 @@ export const useFormLogin = initialForm => {
 		setLoading(true);
 		fetchData()
 			.post({
-				url: `${pathUrl}/user/login`,
+				url: `${import.meta.env.VITE_URL}/user/login`,
 				options: {
 					headers: {
 						'Content-type': 'application/json',
@@ -46,7 +45,7 @@ export const useFormLogin = initialForm => {
 					setTimeout(() => setResponse(false), 5000);
 					fetchData()
 						.get({
-							url: `${pathUrl}/user/profile`,
+							url: `${import.meta.env.VITE_URL}/user/profile`,
 							options: {
 								headers: {
 									'Content-type': 'application/json',

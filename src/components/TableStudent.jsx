@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { pathUrl } from '../constant/url';
 import useLists from '../hooks/useLists';
 import useModal from '../hooks/useModal';
 import FormRegisterStudent from './FormRegisterStudent';
@@ -14,7 +13,7 @@ import Btn from './btn';
 const TableStudent = () => {
 	const [newData, setNewData] = useState(null);
 	const { data, setData, handleLists } = useLists({
-		urlDefault: `${pathUrl}/student/lists`,
+		urlDefault: `${import.meta.env.VITE_URL}/student/lists`,
 	});
 	const {
 		modal: modalRegisterStudent,

@@ -1,5 +1,4 @@
 import { useCallback, useContext, useState } from 'react';
-import { pathUrl } from '../constant/url';
 import { userMsg } from '../context/MsgProvider';
 import { userToken } from '../context/userToken';
 import { fetchData } from '../helpers/fetch';
@@ -11,7 +10,7 @@ const useDelete = ({ urlDefault = '', setData }) => {
 	const deleteData = useCallback(uid => {
 		fetchData()
 			.del({
-				url: `${pathUrl}${urlDefault}${uid}`,
+				url: `${import.meta.env.VITE_URL}${urlDefault}${uid}`,
 				options: {
 					headers: {
 						'Content-type': 'application/json',

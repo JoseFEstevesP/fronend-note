@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { pathUrl } from '../constant/url';
 import useLists from '../hooks/useLists';
 import useModal from '../hooks/useModal';
 import { IconNote } from './Icons';
@@ -10,7 +9,7 @@ import TableRowNotaStudent from './TableRowNotaStudent';
 const TableNoteStudent = () => {
 	const [details, setDetails] = useState([]);
 	const { data, handleLists } = useLists({
-		urlDefault: `${pathUrl}/user/note`,
+		urlDefault: `${import.meta.env.VITE_URL}/user/note`,
 	});
 	const { modal, handelClose, handelOpen } = useModal();
 	useEffect(() => {

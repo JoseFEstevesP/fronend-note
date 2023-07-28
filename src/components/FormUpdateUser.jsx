@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { pathUrl } from '../constant/url';
 import useLists from '../hooks/useLists';
 import { useUpdate } from '../hooks/useUpdate';
 import FormUser from './FormUser';
@@ -15,7 +14,7 @@ const FormUpdateUser = ({ setData, newData, setNewData, setLoading }) => {
 	const { handleChange, errors, setForm, loading, updateData, response, form } =
 		useUpdate('/user/updateData', initForm, setData);
 	const { data: dataRol, handleLists: handleListsRol } = useLists({
-		urlDefault: `${pathUrl}/rol/lists`,
+		urlDefault: `${import.meta.env.VITE_URL}/rol/lists`,
 	});
 	useEffect(() => {
 		handleListsRol();

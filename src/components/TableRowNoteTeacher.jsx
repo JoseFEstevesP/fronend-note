@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react';
-import { pathUrl } from '../constant/url';
 import { userToken } from '../context/userToken';
 import { fetchData } from '../helpers/fetch';
 import { useGet } from '../hooks/useGet';
@@ -31,7 +30,9 @@ const TableRowNoteTeacher = ({
 	useEffect(() => {
 		fetchData()
 			.get({
-				url: `${pathUrl}/note/searchFilterNote?uidTeacher=${uidTeacher}&courseUid=${courseUid}&uidStudent=${uidStudent}&sectionUid=${sectionUid}`,
+				url: `${
+					import.meta.env.VITE_URL
+				}/note/searchFilterNote?uidTeacher=${uidTeacher}&courseUid=${courseUid}&uidStudent=${uidStudent}&sectionUid=${sectionUid}`,
 				options: {
 					headers: {
 						'Content-type': 'application/json',

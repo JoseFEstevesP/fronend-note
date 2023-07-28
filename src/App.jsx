@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import MsgSuccessfully from './components/MsgSuccessfully';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { ProtectedRouteRol } from './components/ProtectedRouteRol';
 import MsgProvider from './context/MsgProvider';
@@ -11,7 +12,6 @@ import Home from './page/Home';
 import NoteStudent from './page/NoteStudent';
 import Options from './page/Options';
 import Teacher from './page/Teacher';
-import MsgSuccessfully from './components/MsgSuccessfully';
 const App = () => {
 	const [token, setToken] = useState(sessionStorage.getItem('token'));
 	const [dataUser, setDataUser] = useState(

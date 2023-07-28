@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { pathUrl } from '../constant/url';
 import useLists from '../hooks/useLists';
 import FormRegisterCourse from './FormRegisterCourse';
 import FormUpdateCourse from './FormUpdateCourse';
@@ -8,7 +7,7 @@ import './table.css';
 const TableCourse = ({ setLoading, isOpen }) => {
 	const [newData, setNewData] = useState(null);
 	const { data, setData, handleLists } = useLists({
-		urlDefault: `${pathUrl}/course/lists`,
+		urlDefault: `${import.meta.env.VITE_URL}/course/lists`,
 	});
 	useEffect(() => handleLists(), []);
 	return (

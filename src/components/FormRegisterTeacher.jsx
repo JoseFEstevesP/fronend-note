@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { pathUrl } from '../constant/url';
 import { useFormRegister } from '../hooks/useFormRegister';
 import useLists from '../hooks/useLists';
 import useSearch from '../hooks/useSearch';
@@ -22,13 +21,13 @@ const FormRegisterTeacher = ({ handelClose, isOpen, setData, setLoading }) => {
 		setErrors,
 	} = useFormRegister({ defaultUrl: '/teacher/register', setData, initForm });
 	const { data: dataRol, handleLists: handleListsRol } = useLists({
-		urlDefault: `${pathUrl}/rol/lists`,
+		urlDefault: `${import.meta.env.VITE_URL}/rol/lists`,
 	});
 	const { data: dataSection, handleLists: handleListsSection } = useLists({
-		urlDefault: `${pathUrl}/section/lists`,
+		urlDefault: `${import.meta.env.VITE_URL}/section/lists`,
 	});
 	const { data: dataCourse, handleLists: handleListsCourse } = useLists({
-		urlDefault: `${pathUrl}/course/lists`,
+		urlDefault: `${import.meta.env.VITE_URL}/course/lists`,
 	});
 	const { handleListsSearch, data } = useSearch({});
 	useEffect(() => {
@@ -49,7 +48,7 @@ const FormRegisterTeacher = ({ handelClose, isOpen, setData, setLoading }) => {
 			dataRol?.forEach(item => {
 				if (item.name === 'profesor') {
 					handleListsSearch({
-						url: `${pathUrl}/user/search/${item.uid}`,
+						url: `${import.meta.env.VITE_URL}/user/search/${item.uid}`,
 					});
 				}
 			});

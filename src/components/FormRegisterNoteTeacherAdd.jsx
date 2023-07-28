@@ -109,7 +109,7 @@ const FormRegisterNoteTeacherAdd = ({
 		} else {
 			setMsg({
 				msgNote: 'Los puntos tienen que ser de 20Pts y los porcentaje de 100%',
-				type:false
+				type: false,
 			});
 		}
 	};
@@ -279,14 +279,16 @@ const FormRegisterNoteTeacherAdd = ({
 										</tr>
 									);
 								})}
+							</tbody>
+							<tfoot>
 								<tr>
-									<td className='table__td'>Total</td>
+									<th className='table__td'>Total</th>
 									<td className='table__td'>{points.pointsActivity}</td>
 									<td className='table__td'>{points.percentageActivity}%</td>
-									<td className='table__td'>{points.point}</td>
+									<td className='table__td'>{points.point} </td>
 									<td className='table__td'>{points.percentage}%</td>
 								</tr>
-							</tbody>
+							</tfoot>
 						</table>
 					</section>
 				)}

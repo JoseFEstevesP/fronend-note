@@ -1,5 +1,4 @@
 import { useContext, useState } from 'react';
-import { pathUrl } from '../constant/url';
 import { userMsg } from '../context/MsgProvider';
 import { userToken } from '../context/userToken';
 import { fetchData } from '../helpers/fetch';
@@ -20,7 +19,7 @@ export const useUpdate = (urlDefault, initForm, setData) => {
 		setLoading(true);
 		fetchData()
 			.put({
-				url: `${pathUrl}${urlDefault}`,
+				url: `${import.meta.env.VITE_URL}${urlDefault}`,
 				options: {
 					headers: {
 						'Content-type': 'application/json',
@@ -54,7 +53,7 @@ export const useUpdate = (urlDefault, initForm, setData) => {
 		setLoading(true);
 		fetchData()
 			.put({
-				url: `${pathUrl}${urlDefault}`,
+				url: `${import.meta.env.VITE_URL}${urlDefault}`,
 				options: {
 					headers: {
 						'Content-type': 'application/json',

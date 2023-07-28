@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { pathUrl } from '../constant/url';
 import { useFormRegister } from '../hooks/useFormRegister';
 import useLists from '../hooks/useLists';
 import FormUser from './FormUser';
@@ -27,7 +26,7 @@ const FormRegisterUser = ({ setData, handelClose, setLoading, isOpen }) => {
 		initForm,
 	});
 	const { data: dataRol, handleLists: handleListsRol } = useLists({
-		urlDefault: `${pathUrl}/rol/lists`,
+		urlDefault: `${import.meta.env.VITE_URL}/rol/lists`,
 	});
 	useEffect(() => {
 		if (!isOpen) {

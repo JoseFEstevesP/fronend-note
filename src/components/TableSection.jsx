@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { pathUrl } from '../constant/url';
 import useLists from '../hooks/useLists';
 import FormRegisterSection from './FormRegisterSection';
 import FormUpdateSection from './FormUpdateSection';
@@ -7,7 +6,7 @@ import TableRowSection from './TableRowSection';
 const TableSection = ({ isOpen, setLoading }) => {
 	const [newData, setNewData] = useState(null);
 	const { data, setData, handleLists } = useLists({
-		urlDefault: `${pathUrl}/section/lists`,
+		urlDefault: `${import.meta.env.VITE_URL}/section/lists`,
 	});
 	useEffect(() => handleLists(), []);
 	return (

@@ -1,13 +1,12 @@
 import { useCallback, useContext } from 'react';
-import { fetchData } from '../helpers/fetch';
 import { userToken } from '../context/userToken';
-import { pathUrl } from '../constant/url';
+import { fetchData } from '../helpers/fetch';
 
 export const useProfile = () => {
 	const { token } = useContext(userToken);
 	const handelProfile = useCallback(() => {
 		return fetchData().get({
-			url: `${pathUrl}/user/profile`,
+			url: `${import.meta.env.VITE_URL}/user/profile`,
 			options: {
 				headers: {
 					'Content-type': 'application/json',

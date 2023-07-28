@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { pathUrl } from '../constant/url';
 import useLists from '../hooks/useLists';
 import FormRegisterRol from './FormRegisterRol';
 import FormUpdateRol from './FormUpdateRol';
@@ -12,7 +11,7 @@ const TableRol = ({ setLoading, isOpen }) => {
 		setData: setDataRol,
 		handleLists: handleListsRol,
 	} = useLists({
-		urlDefault: `${pathUrl}/rol/lists`,
+		urlDefault: `${import.meta.env.VITE_URL}/rol/lists`,
 	});
 
 	useEffect(() => handleListsRol(), []);

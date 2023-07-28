@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react';
-import { pathUrl } from '../constant/url';
 import useLists from '../hooks/useLists';
 import useModal from '../hooks/useModal';
 import FormRegisterNoteTeacherAdd from './FormRegisterNoteTeacherAdd';
+import { IconNote } from './Icons';
 import Modal from './Modal';
+import TablaGetNote from './TablaGetNote';
 import TableRowNoteTeacher from './TableRowNoteTeacher';
 import './table.css';
-import TablaGetNote from './TablaGetNote';
-import { IconNote } from './Icons';
 const TableNoteAdd = () => {
 	const [newDate, setNewDate] = useState({});
 	const [note, setNote] = useState([]);
 	const { data, handleLists } = useLists({
-		urlDefault: `${pathUrl}/teacher/listsStudent`,
+		urlDefault: `${import.meta.env.VITE_URL}/teacher/listsStudent`,
 	});
 	const {
 		modal: modalRegisterNote,
