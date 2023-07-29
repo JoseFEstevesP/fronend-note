@@ -46,3 +46,13 @@
 	background: var(--background);
 	box-shadow: 0 0 0.3125em var(--border);
 }
+.login__logo {
+	position: absolute;
+	top: -1.4em;
+	left: 50%;
+	margin: 0;
+	transform: translateX(-50%);
+}
+.login__logoIcon {
+	width: 4.3em;
+}
